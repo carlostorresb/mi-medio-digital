@@ -1,6 +1,6 @@
 {
   "subtitulo": "Una acción que, según dicen, podría ser un intento de sabotaje contra la empresa.",
-  "cuerpo": "{'parrafo1': 'Un grupo de hackers iraníes con vínculos a las agencias de inteligencia del país afirmaron haber realizado un ataque de lavado de datos en Stryker, una empresa global de tecnología médica basada en Michigan.', 'parrafo2': 'Los hackers también informaron que el ataque afectó a más de 5.000 empleados de la empresa en su ubicación principal en Estados Unidos.'} {'parrafo1': 'La empresa de tecnología médica informó que se ha desplegado sobre 5.000 trabajadores en su sede en Irlanda para evacuar los datos sensibles.', 'parrafo2': 'El ataque, según reportes desde Irlanda, también afectaría a la sede del grupo en Estados Unidos.'} {'parrafo1': '', 'parrafo2': ''}",
+  "cuerpo": "<p>Un grupo de hackers iraníes con vínculos a las agencias de inteligencia del país afirmaron haber realizado un ataque de lavado de datos en Stryker, una empresa global de tecnología médica basada en Michigan.</p><p>Los hackers también informaron que el ataque afectó a más de 5.000 empleados de la empresa en su ubicación principal en Estados Unidos.</p><p>La empresa de tecnología médica informó que se ha desplegado sobre 5.000 trabajadores en su sede en Irlanda para evacuar los datos sensibles.</p><p>El ataque, según reportes desde Irlanda, también afectaría a la sede del grupo en Estados Unidos.</p>",
   "tags": [
     "tag1",
     "tag2"
