@@ -20,7 +20,7 @@ function cargarArticulos() {
       const puntaje = art.puntuacion || art.puntuacion_editor || 0;
       if (puntaje >= 9) return horas < 48;
       if (puntaje >= 7) return horas < 24;
-      return horas < 3;
+      return horas < 24;
     })
     .sort((a, b) => {
       const pa = b.puntuacion || b.puntuacion_editor || 0;
