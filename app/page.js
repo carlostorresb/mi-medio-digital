@@ -31,11 +31,16 @@ function cargarArticulos() {
 }
 
 const SECCIONES = {
-  tecnologia:     { label: "Tecnologia",     color: "bg-blue-100 text-blue-800" },
-  economia:       { label: "Economia",       color: "bg-green-100 text-green-800" },
-  ciberseguridad: { label: "Ciberseguridad", color: "bg-red-100 text-red-800" },
-  politica:       { label: "Politica",       color: "bg-yellow-100 text-yellow-800" },
-  deportes:       { label: "Deportes",       color: "bg-purple-100 text-purple-800" },
+  el_pais:       { label: "El Pais",       color: "bg-red-100 text-red-800" },
+  internacional: { label: "Internacional", color: "bg-blue-100 text-blue-800" },
+  economia:      { label: "Economia",      color: "bg-green-100 text-green-800" },
+  sociedad:      { label: "Sociedad",      color: "bg-orange-100 text-orange-800" },
+  tecnologia:    { label: "Tecnologia",    color: "bg-cyan-100 text-cyan-800" },
+  ciencia:       { label: "Ciencia",       color: "bg-indigo-100 text-indigo-800" },
+  salud:         { label: "Salud",         color: "bg-pink-100 text-pink-800" },
+  cultura:       { label: "Cultura",       color: "bg-purple-100 text-purple-800" },
+  deportes:      { label: "Deportes",      color: "bg-yellow-100 text-yellow-800" },
+  opinion:       { label: "Opinion",       color: "bg-gray-100 text-gray-800" },
 };
 
 function tarjetaArticulo(art) {
