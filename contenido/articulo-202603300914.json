@@ -1,10 +1,6 @@
 {
   "subtitulo": "una oracion de contexto",
-  "cuerpo": [
-    "Una declaración del ex presidente estadounidense Donald Trump ha generado especulación sobre el posibles accionamientos militares de EE.UU. hacia la isla de Jark, ubicada en el centro neurálgico de la industria petrolera de Irán.",
-    "El centro neurálgico de la industria petrolera de Irán es considerado un punto de no retorno para las exportaciones de petróleo y gas de Irán a los mercados internacionales.",
-    "De acuerdo con un especialista en relaciones internacionales, tomar control de la isla sería una gran victoria para EE.UU. pero también tendría graves consecuencias logísticas y estratégicas."
-  ],
+  "cuerpo": "<p>Una declaración del ex presidente estadounidense Donald Trump ha generado especulación sobre el posibles accionamientos militares de EE.UU. hacia la isla de Jark, ubicada en el centro neurálgico de la industria petrolera de Irán.</p><p>El centro neurálgico de la industria petrolera de Irán es considerado un punto de no retorno para las exportaciones de petróleo y gas de Irán a los mercados internacionales.</p><p>De acuerdo con un especialista en relaciones internacionales, tomar control de la isla sería una gran victoria para EE.UU. pero también tendría graves consecuencias logísticas y estratégicas.</p>",
   "tags": [
     "tag1",
     "tag2"
