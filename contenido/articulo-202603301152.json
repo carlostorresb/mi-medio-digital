@@ -1,0 +1,18 @@
+{
+  "seccion": "ciberseguridad",
+  "url_fuente": "https://thehackernews.com/2026/03/weekly-recap-telecom-sleeper-cells-llm.html",
+  "fecha_generacion": "2026-03-30T11:52:17.713041",
+  "slug": "articulo-202603301152",
+  "titular": "¡Weekly Recap: Telecom Sleeper Cells, LLM Jailbreaks, Apple Forces U.K. Age Checks y Métodos",
+  "subtitulo": "Esta semana fue un poco más tranquila pero con mucho contenido. Se nos presentaron casos de telecomanadas que se utilizaban para espiar a las personas, lenguajes de control para jailbreakar aplicaciones y medidas de seguridad que Apple puso en marcha en el Reino Unido",
+  "tags": [
+    "telecomanada",
+    "LLM",
+    "jailbreaks",
+    "Apple",
+    "U.K.",
+    "edad",
+    "influencia operativa"
+  ],
+  "cuerpo": "<p>Esta semana fue un poco más tranquila pero con mucho contenido. Se nos presentaron casos de telecomanadas que se utilizaban para espiar a las personas, lenguajes de control para jailbreakar aplicaciones y medidas de seguridad que Apple puso en marcha en el Reino Unido</p>"
+}

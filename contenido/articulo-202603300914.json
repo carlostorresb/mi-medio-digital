@@ -1,5 +1,4 @@
 {
-  "titulo": "titulo atractivo en español",
   "subtitulo": "una oracion de contexto",
   "cuerpo": [
     "Una declaración del ex presidente estadounidense Donald Trump ha generado especulación sobre el posibles accionamientos militares de EE.UU. hacia la isla de Jark, ubicada en el centro neurálgico de la industria petrolera de Irán.",
@@ -14,5 +13,6 @@
   "seccion": "politica",
   "url_fuente": "https://www.bbc.com/mundo/articles/cg73252r4vzo?at_medium=RSS&at_campaign=rss",
   "fecha_generacion": "2026-03-30T09:14:53",
-  "slug": "articulo-202603300914"
+  "slug": "articulo-202603300914",
+  "titular": "titulo atractivo en español"
 }
