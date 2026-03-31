@@ -7,35 +7,50 @@ GITHUB_REPO = "carlostorresb/mi-medio-digital"
 GITHUB_BRANCH = "main"
 
 SECCIONES = {
-    "ciberseguridad": {
-        "nombre": "Ciberseguridad",
-        "feeds": ["https://feeds.feedburner.com/TheHackersNews","https://krebsonsecurity.com/feed/"],
-        "estilo": "Eres periodista de ciberseguridad para audiencia peruana.",
+    "el_pais": {
+        "nombre": "El Pais",
+        "feeds": ["https://elcomercio.pe/rss/politica.xml","https://feeds.bbci.co.uk/mundo/america_latina/rss.xml"],
+        "estilo": "Eres periodista peruano. Cubres noticias nacionales de Peru. Escribes en español peruano neutral.",
     },
-    "tecnologia": {
-        "nombre": "Tecnologia",
-        "feeds": ["https://feeds.bbci.co.uk/mundo/ciencia_y_tecnologia/rss.xml"],
-        "estilo": "Eres periodista de tecnologia. Escribes en español peruano.",
+    "internacional": {
+        "nombre": "Internacional",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/rss.xml"],
+        "estilo": "Eres corresponsal internacional. Cubres noticias del mundo con enfoque en Latinoamerica.",
     },
     "economia": {
         "nombre": "Economia",
-        "feeds": ["https://feeds.bbci.co.uk/mundo/economia/rss.xml"],
-        "estilo": "Eres periodista economico. Escribes en español peruano.",
+        "feeds": ["https://gestion.pe/feed/","https://feeds.bbci.co.uk/mundo/economia/rss.xml"],
+        "estilo": "Eres periodista economico peruano. Cubres finanzas y negocios.",
+    },
+    "sociedad": {
+        "nombre": "Sociedad",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/rss.xml"],
+        "estilo": "Eres periodista de sociedad. Cubres educacion, justicia y vida cotidiana en Peru.",
+    },
+    "tecnologia": {
+        "nombre": "Tecnologia",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/ciencia_y_tecnologia/rss.xml","https://hipertextual.com/feed"],
+        "estilo": "Eres periodista de tecnologia. Cubres IA, startups e innovacion digital.",
+    },
+    "ciencia": {
+        "nombre": "Ciencia",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/ciencia_y_tecnologia/rss.xml"],
+        "estilo": "Eres periodista cientifico. Explicas descubrimientos cientificos de forma accesible.",
+    },
+    "salud": {
+        "nombre": "Salud",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/rss.xml"],
+        "estilo": "Eres periodista de salud. Cubres noticias medicas y salud publica.",
+    },
+    "cultura": {
+        "nombre": "Cultura",
+        "feeds": ["https://feeds.bbci.co.uk/mundo/rss.xml"],
+        "estilo": "Eres periodista cultural peruano. Cubres arte, musica, cine y literatura.",
     },
     "deportes": {
         "nombre": "Deportes",
-        "feeds": [
-            "https://www.libero.pe/rss/futbol-peruano.xml",
-            "https://feeds.bbci.co.uk/sport/football/rss.xml",
-            "https://e00-marca.uecdn.es/rss/futbol/primera-division.xml",
-            "https://www.espn.com/espn/rss/soccer/news",
-        ],
-        "estilo": "Eres un periodista deportivo apasionado especializado en futbol. Cubres la Liga Peruana, Premier League, La Liga española y la MLS. Tienes especial atencion al Inter Miami y Lionel Messi. Escribes en español peruano con emocion y pasion, usando terminos futbolisticos. Articulos de 300-500 palabras con titular atractivo.",
-    },
-    "politica": {
-        "nombre": "Politica",
-        "feeds": ["https://feeds.bbci.co.uk/mundo/america_latina/rss.xml"],
-        "estilo": "Eres periodista politico neutral.",
+        "feeds": ["https://www.libero.pe/rss/futbol-peruano.xml","https://feeds.bbci.co.uk/sport/football/rss.xml"],
+        "estilo": "Eres periodista deportivo peruano. Cubres futbol peruano, Premier League y el Inter Miami de Messi.",
     },
 }
 
