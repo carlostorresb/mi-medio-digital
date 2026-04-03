@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sala de Redacción — Mi Medio Digital</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#111111;
+  --sidebar:#0d0d0d;
+  --panel:#161616;
+  --card:#1c1c1c;
+  --card-hover:#202020;
+  --card-active:#242424;
+  --accent:#c9a96e;
+  --accent-dim:rgba(201,169,110,0.14);
+  --accent-border:rgba(201,169,110,0.28);
+  --text:#e8e4dc;
+  --text-sec:#7a7670;
+  --text-muted:#3d3b38;
+  --border:#252525;
+  --border-light:#2e2e2e;
+  --success:#4a9e6f;
+  --danger:#c45b5b;
+  --info:#5b8fc4;
+  --font-serif:Georgia,'Times New Roman',serif;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:14px;-webkit-font-smoothing:antialiased;}
+
+#app{display:grid;grid-template-columns:272px 1fr;height:100vh;}
+
+/* ── Sidebar ── */
+#sidebar{background:var(--sidebar);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+
+#sb-head{padding:20px 16px 14px;border-bottom:1px solid var(--border);}
+#sb-head .logo{font-family:var(--font-serif);font-size:15px;color:var(--accent);letter-spacing:.02em;margin-bottom:2px;}
+#sb-head .sub{font-size:10px;color:var(--text-sec);text-transform:uppercase;letter-spacing:.08em;}
+
+#new-btn{margin:10px 10px 4px;padding:9px 12px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:8px;color:var(--accent);font-size:12px;font-weight:500;cursor:pointer;transition:background .15s;text-align:left;}
+#new-btn:hover{background:rgba(201,169,110,0.22);}
+
+#j-list{flex:1;overflow-y:auto;padding:4px 8px 8px;}
+#j-list::-webkit-scrollbar{width:3px;}
+#j-list::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:2px;}
+
+.jc{padding:11px;border-radius:8px;cursor:pointer;margin-bottom:3px;border:1px solid transparent;transition:background .1s,border-color .1s;}
+.jc:hover{background:var(--card-hover);}
+.jc.on{background:var(--card-active);border-color:var(--border-light);}
+
+.jc-top{display:flex;align-items:center;gap:9px;margin-bottom:5px;}
+.av{width:34px;height:34px;border-radius:50%;background:var(--card-active);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.jc-name{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.jc-role{font-size:11px;color:var(--text-sec);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
+.badge{font-size:10px;padding:2px 7px;border-radius:99px;background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-border);white-space:nowrap;margin-left:auto;}
+.jc-meta{font-size:10px;color:var(--text-muted);}
+
+#empty{text-align:center;padding:36px 16px;color:var(--text-sec);}
+#empty .ei{font-size:28px;margin-bottom:10px;}
+#empty p{font-size:12px;line-height:1.65;}
+
+/* ── Main ── */
+#main{display:flex;flex-direction:column;overflow:hidden;background:var(--panel);}
+
+#welcome{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-sec);}
+#welcome .wi{font-size:44px;margin-bottom:4px;}
+#welcome h2{font-family:var(--font-serif);font-size:18px;color:var(--accent);font-weight:normal;}
+#welcome p{font-size:12px;line-height:1.7;text-align:center;max-width:280px;}
+
+#form-area{display:none;flex-direction:column;height:100%;}
+
+#mh{padding:14px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+#mh-info{min-width:0;}
+#mh-title{font-size:15px;font-weight:500;color:var(--text);}
+#mh-sub{font-size:11px;color:var(--text-sec);margin-top:2px;}
+#mh-acts{display:flex;gap:7px;flex-shrink:0;}
+
+.btn{padding:6px 13px;border-radius:7px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--border-light);background:var(--card);color:var(--text);transition:background .15s;white-space:nowrap;}
+.btn:hover{background:var(--card-active);}
+.btn-save{border-color:rgba(74,158,111,.3);color:var(--success);background:rgba(74,158,111,.08);}
+.btn-save:hover{background:rgba(74,158,111,.16);}
+.btn-del{border-color:rgba(196,91,91,.3);color:var(--danger);background:rgba(196,91,91,.08);}
+.btn-del:hover{background:rgba(196,91,91,.16);}
+
+#fs{flex:1;overflow-y:auto;padding:18px 22px;}
+#fs::-webkit-scrollbar{width:3px;}
+#fs::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:2px;}
+
+.fsec{margin-bottom:18px;}
+.fsec-title{font-size:10px;font-weight:600;color:var(--text-sec);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.g3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:11px;}
+
+.fld{margin-bottom:10px;}
+.fld label{display:block;font-size:11px;color:var(--text-sec);margin-bottom:4px;letter-spacing:.02em;}
+
+.fld input,.fld select,.fld textarea{
+  width:100%;background:var(--card);border:1px solid var(--border-light);border-radius:7px;
+  color:var(--text);font-family:var(--font-sans);font-size:12px;padding:7px 10px;outline:none;transition:border-color .15s;
+}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);}
+.fld textarea{resize:vertical;line-height:1.6;}
+.fld select option{background:#1c1c1c;}
+input[type=number]{-moz-appearance:textfield;}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
+
+.feed-row{display:flex;gap:7px;margin-bottom:7px;align-items:center;}
+.feed-row input{flex:1;}
+.rm{width:30px;height:33px;border-radius:7px;border:1px solid var(--border-light);background:none;color:var(--text-sec);cursor:pointer;font-size:16px;flex-shrink:0;transition:color .15s,border-color .15s;}
+.rm:hover{color:var(--danger);border-color:rgba(196,91,91,.4);}
+.add-feed{font-size:11px;color:var(--info);background:none;border:none;cursor:pointer;padding:3px 0;}
+.add-feed:hover{color:var(--text);}
+
+.rr{display:flex;align-items:center;gap:11px;}
+.rr input[type=range]{flex:1;accent-color:var(--accent);}
+.rv{font-size:14px;font-weight:600;color:var(--accent);min-width:18px;}
+
+.tog-wrap{display:flex;align-items:center;gap:9px;}
+.tog{width:34px;height:19px;background:var(--border-light);border-radius:99px;cursor:pointer;position:relative;transition:background .2s;border:none;flex-shrink:0;}
+.tog::after{content:'';position:absolute;width:13px;height:13px;background:var(--text-sec);border-radius:50%;top:3px;left:3px;transition:left .2s,background .2s;}
+.tog.on{background:rgba(74,158,111,.3);}
+.tog.on::after{left:18px;background:var(--success);}
+.tog-lbl{font-size:12px;color:var(--text-sec);}
+
+#ff{padding:11px 22px;border-top:1px solid var(--border);display:flex;align-items:center;gap:7px;flex-shrink:0;}
+#toast{margin-left:auto;font-size:11px;color:var(--success);opacity:0;transition:opacity .3s;}
+#toast.show{opacity:1;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <aside id="sidebar">
+    <div id="sb-head">
+      <div class="logo">Mi Medio Digital</div>
+      <div class="sub">Sala de Redacción</div>
+    </div>
+    <button id="new-btn" onclick="newJ()">+ Nuevo periodista</button>
+    <div id="j-list"></div>
+  </aside>
+
+  <main id="main">
+    <div id="welcome">
+      <div class="wi">🗞</div>
+      <h2>Sala de Redacción</h2>
+      <p>Crea y gestiona los periodistas IA de tu medio. Cada uno tiene su propia voz, sección y feeds RSS.</p>
+    </div>
+
+    <div id="form-area">
+      <div id="mh">
+        <div id="mh-info">
+          <div id="mh-title">Nuevo periodista</div>
+          <div id="mh-sub">Completa el perfil del agente</div>
+        </div>
+        <div id="mh-acts">
+          <button class="btn" onclick="expJSON()">↓ JSON</button>
+          <button class="btn" onclick="expMD()">↓ Obsidian</button>
+          <button class="btn btn-save" onclick="saveJ()">Guardar</button>
+          <button class="btn btn-del" onclick="delJ()">Eliminar</button>
+        </div>
+      </div>
+
+      <div id="fs">
+
+        <div class="fsec">
+          <div class="fsec-title">Identidad</div>
+          <div class="g3">
+            <div class="fld" style="grid-column:span 2;">
+              <label>Nombre del periodista</label>
+              <input type="text" id="f-nom" placeholder="Ej: Periodista de Tecnología" />
+            </div>
+            <div class="fld">
+              <label>Emoji avatar</label>
+              <input type="text" id="f-em" value="📰" maxlength="2" style="text-align:center;font-size:18px;" />
+            </div>
+          </div>
+          <div class="g2">
+            <div class="fld">
+              <label>Sección asignada</label>
+              <select id="f-sec">
+                <option value="el_pais">El País</option>
+                <option value="internacional">Internacional</option>
+                <option value="economia">Economía</option>
+                <option value="sociedad">Sociedad</option>
+                <option value="tecnologia">Tecnología</option>
+                <option value="ciencia">Ciencia</option>
+                <option value="salud">Salud</option>
+                <option value="cultura">Cultura</option>
+                <option value="deportes">Deportes</option>
+                <option value="opinion">Opinión</option>
+              </select>
+            </div>
+            <div class="fld">
+              <label>Modelo Ollama</label>
+              <select id="f-mod">
+                <option value="mistral:latest">mistral:latest</option>
+                <option value="llama3.2:latest">llama3.2:latest</option>
+              </select>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Descripción del rol</label>
+            <input type="text" id="f-desc" placeholder="Ej: Especialista en ciberseguridad y privacidad digital" />
+          </div>
+        </div>
+
+        <div class="fsec">
+          <div class="fsec-title">Instrucciones del sistema</div>
+          <div class="fld">
+            <label>System prompt — voz, tono y enfoque editorial</label>
+            <textarea id="f-inst" rows="7" placeholder="Eres un periodista especializado en tecnología. Escribes con claridad y precisión técnica, pero usando lenguaje accesible para el lector general. Priorizas noticias con impacto real en el usuario. Siempre contextualiza la noticia con antecedentes relevantes. Usa un tono directo, informativo y sin sensacionalismo. Al final de cada artículo incluye una frase de contexto peruano si aplica."></textarea>
+          </div>
+          <div class="fld">
+            <label>Palabras clave (separadas por coma)</label>
+            <input type="text" id="f-kw" placeholder="inteligencia artificial, ciberseguridad, startups, innovación" />
+          </div>
+        </div>
+
+        <div class="fsec">
+          <div class="fsec-title">Feeds RSS</div>
+          <div id="feeds-c"></div>
+          <button class="add-feed" onclick="addFeed()">+ Agregar feed</button>
+        </div>
+
+        <div class="fsec">
+          <div class="fsec-title">Configuración de publicación</div>
+          <div class="g2">
+            <div class="fld">
+              <label>Puntuación mínima para publicar</label>
+              <div class="rr">
+                <input type="range" id="f-pun" min="1" max="10" value="7" step="1" oninput="document.getElementById('sv').textContent=this.value" />
+                <span class="rv" id="sv">7</span>
+              </div>
+            </div>
+            <div class="fld">
+              <label>Artículos máximos por ejecución</label>
+              <input type="number" id="f-max" value="3" min="1" max="20" />
+            </div>
+          </div>
+          <div class="fld">
+            <label>Estado del agente</label>
+            <div class="tog-wrap">
+              <button class="tog on" id="tog" onclick="toggleA()"></button>
+              <span class="tog-lbl" id="tog-lbl">Activo</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /fs -->
+
+      <div id="ff">
+        <button class="btn btn-save" onclick="saveJ()">Guardar cambios</button>
+        <button class="btn" onclick="expJSON()">↓ Exportar JSON</button>
+        <button class="btn" onclick="expMD()">↓ Exportar Markdown</button>
+        <span id="toast"></span>
+      </div>
+    </div><!-- /form-area -->
+  </main>
+</div>
+
+<script>
+const KEY = 'mi-medio-periodistas';
+let DB = JSON.parse(localStorage.getItem(KEY) || '[]');
+let curId = null;
+let feeds = [''];
+let activo = true;
+let toastT;
+
+function persist(){ localStorage.setItem(KEY, JSON.stringify(DB)); }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function renderList(){
+  const el = document.getElementById('j-list');
+  if(!DB.length){
+    el.innerHTML='<div id="empty"><div class="ei">✍️</div><p>Sin periodistas aún.<br>Crea el primero arriba.</p></div>';
+    return;
+  }
+  el.innerHTML = DB.map(j=>`
+    <div class="jc${j.id===curId?' on':''}" onclick="selJ('${j.id}')">
+      <div class="jc-top">
+        <div class="av">${j.emoji||'📰'}</div>
+        <div style="flex:1;min-width:0;">
+          <div class="jc-name">${esc(j.nombre||'Sin nombre')}</div>
+          <div class="jc-role">${esc(j.descripcion||'—')}</div>
+        </div>
+        <span class="badge">${j.seccion||'—'}</span>
+      </div>
+      <div class="jc-meta">${(j.feeds_rss||[]).length} feeds · mín. ${j.puntuacion_minima||7}/10 · ${j.activo!==false?'● activo':'○ inactivo'}</div>
+    </div>`).join('');
+}
+
+function showForm(){ document.getElementById('welcome').style.display='none'; document.getElementById('form-area').style.display='flex'; }
+function hideForm(){ document.getElementById('welcome').style.display='flex'; document.getElementById('form-area').style.display='none'; }
+
+function fillForm(j){
+  feeds = j.feeds_rss?.length ? [...j.feeds_rss] : [''];
+  activo = j.activo !== false;
+  set('f-nom', j.nombre||'');
+  set('f-em', j.emoji||'📰');
+  setV('f-sec', j.seccion||'tecnologia');
+  setV('f-mod', j.modelo||'mistral:latest');
+  set('f-desc', j.descripcion||'');
+  set('f-inst', j.instrucciones||'');
+  set('f-kw', (j.palabras_clave||[]).join(', '));
+  setV('f-pun', j.puntuacion_minima||7);
+  document.getElementById('sv').textContent = j.puntuacion_minima||7;
+  setV('f-max', j.max_articulos||3);
+  document.getElementById('mh-title').textContent = j.nombre||'Sin nombre';
+  document.getElementById('mh-sub').textContent = (j.seccion||'—')+' · '+(j.modelo||'mistral:latest');
+  const tog = document.getElementById('tog');
+  tog.className='tog'+(activo?' on':'');
+  document.getElementById('tog-lbl').textContent = activo?'Activo':'Inactivo';
+  renderFeeds();
+}
+
+function newJ(){
+  curId=null; feeds=['']; activo=true;
+  fillForm({});
+  document.getElementById('mh-title').textContent='Nuevo periodista';
+  document.getElementById('mh-sub').textContent='Completa el perfil del agente';
+  renderList(); showForm();
+}
+
+function selJ(id){
+  const j=DB.find(x=>x.id===id); if(!j) return;
+  curId=id; fillForm(j); renderList(); showForm();
+}
+
+function getData(){
+  return {
+    nombre: val('f-nom')||'Sin nombre',
+    seccion: val('f-sec'),
+    modelo: val('f-mod'),
+    emoji: val('f-em')||'📰',
+    descripcion: val('f-desc'),
+    instrucciones: val('f-inst'),
+    palabras_clave: val('f-kw').split(',').map(k=>k.trim()).filter(Boolean),
+    feeds_rss: feeds.filter(f=>f.trim()),
+    puntuacion_minima: parseInt(val('f-pun'))||7,
+    max_articulos: parseInt(val('f-max'))||3,
+    activo
+  };
+}
+
+function saveJ(){
+  const d=getData();
+  if(!d.nombre||d.nombre==='Sin nombre'){ toast('⚠ Escribe un nombre para el periodista',true); return; }
+  if(curId){ const i=DB.findIndex(x=>x.id===curId); DB[i]={...d,id:curId,created_at:DB[i].created_at}; }
+  else { const nj={...d,id:uid(),created_at:new Date().toISOString()}; DB.unshift(nj); curId=nj.id; }
+  persist(); renderList();
+  document.getElementById('mh-title').textContent=d.nombre;
+  document.getElementById('mh-sub').textContent=d.seccion+' · '+d.modelo;
+  toast('✓ Guardado correctamente');
+}
+
+function delJ(){
+  if(!curId) return;
+  if(!confirm('¿Eliminar este periodista? Esta acción no se puede deshacer.')) return;
+  DB=DB.filter(x=>x.id!==curId); curId=null;
+  persist(); renderList(); hideForm();
+}
+
+function toggleA(){
+  activo=!activo;
+  document.getElementById('tog').className='tog'+(activo?' on':'');
+  document.getElementById('tog-lbl').textContent=activo?'Activo':'Inactivo';
+}
+
+function renderFeeds(){
+  const c=document.getElementById('feeds-c'); c.innerHTML='';
+  feeds.forEach((f,i)=>{
+    const r=document.createElement('div'); r.className='feed-row';
+    r.innerHTML=`<input type="text" value="${esc(f)}" placeholder="https://feeds.bbci.co.uk/news/technology/rss.xml" oninput="feeds[${i}]=this.value" /><button class="rm" onclick="rmFeed(${i})">×</button>`;
+    c.appendChild(r);
+  });
+}
+
+function addFeed(){ feeds.push(''); renderFeeds(); }
+function rmFeed(i){ feeds.splice(i,1); if(!feeds.length) feeds.push(''); renderFeeds(); }
+
+function expJSON(){
+  const d=getData();
+  dl(JSON.stringify(d,null,2), 'periodista_'+d.seccion+'.json', 'application/json');
+  toast('✓ JSON descargado — cópialo a agentes/'+d.seccion+'.json');
+}
+
+function expMD(){
+  const d=getData();
+  const fds=d.feeds_rss.length?d.feeds_rss.map(f=>'- '+f).join('\n'):'- (sin feeds)';
+  const kws=d.palabras_clave.length?d.palabras_clave.join(', '):'—';
+  const md=`# ${d.emoji} ${d.nombre}\n\n**Sección:** ${d.seccion}\n**Modelo:** ${d.modelo}\n**Puntuación mínima:** ${d.puntuacion_minima}/10\n**Artículos por ejecución:** ${d.max_articulos}\n**Estado:** ${d.activo?'activo':'inactivo'}\n\n## Rol\n${d.descripcion||'—'}\n\n## Instrucciones del sistema\n${d.instrucciones||'—'}\n\n## Palabras clave\n${kws}\n\n## Feeds RSS\n${fds}\n\n---\n*Generado con Sala de Redacción — Mi Medio Digital*`;
+  dl(md, 'Periodista_'+d.seccion+'.md', 'text/markdown');
+  toast('✓ Markdown descargado — ábrelo en Obsidian');
+}
+
+function dl(content, filename, type){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([content],{type}));
+  a.download=filename; a.click();
+}
+
+function toast(msg, warn=false){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.style.color=warn?'#c9a96e':'#4a9e6f';
+  el.classList.add('show'); clearTimeout(toastT);
+  toastT=setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+function val(id){ return document.getElementById(id)?.value?.trim()||''; }
+function set(id,v){ const el=document.getElementById(id); if(el) el.value=v; }
+function setV(id,v){ const el=document.getElementById(id); if(el) el.value=v; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+renderList();
+</script>
+</body>
+</html>
