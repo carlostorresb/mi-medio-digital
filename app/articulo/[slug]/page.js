@@ -1,13 +1,19 @@
-import fs from "fs";
+﻿import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const SECCIONES = {
-  tecnologia:     { label: "Tecnologia",     color: "bg-blue-100 text-blue-800" },
-  economia:       { label: "Economia",       color: "bg-green-100 text-green-800" },
-  ciberseguridad: { label: "Ciberseguridad", color: "bg-red-100 text-red-800" },
-  politica:       { label: "Politica",       color: "bg-yellow-100 text-yellow-800" },
+  el_pais:       { label: "El Pais",       color: "bg-red-100 text-red-800" },
+  internacional: { label: "Internacional", color: "bg-blue-100 text-blue-800" },
+  economia:      { label: "Economia",      color: "bg-green-100 text-green-800" },
+  sociedad:      { label: "Sociedad",      color: "bg-orange-100 text-orange-800" },
+  tecnologia:    { label: "Tecnologia",    color: "bg-cyan-100 text-cyan-800" },
+  ciencia:       { label: "Ciencia",       color: "bg-indigo-100 text-indigo-800" },
+  salud:         { label: "Salud",         color: "bg-pink-100 text-pink-800" },
+  cultura:       { label: "Cultura",       color: "bg-purple-100 text-purple-800" },
+  deportes:      { label: "Deportes",      color: "bg-yellow-100 text-yellow-800" },
+  opinion:       { label: "Opinion",       color: "bg-gray-100 text-gray-800" },
 };
 
 function cargarArticulo(slug) {
@@ -34,26 +40,24 @@ export default function Articulo({ params }) {
   const art = cargarArticulo(params.slug);
   if (!art) notFound();
   const seccion = SECCIONES[art.seccion] ?? { label: art.seccion, color: "bg-gray-100 text-gray-700" };
-
   return (
     <main className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold text-gray-900 hover:text-blue-700">
-            ← Mi Medio Digital
+            Mi Medio Digital
           </Link>
           <span className={`text-xs font-semibold px-3 py-1 rounded-full ${seccion.color}`}>
             {seccion.label}
           </span>
         </div>
       </header>
-
       <article className="max-w-4xl mx-auto px-4 py-10">
         <div className="flex items-center gap-3 text-sm text-gray-400 mb-6">
           <time>{art.fecha_generacion?.slice(0, 10)}</time>
-          {art.puntuacion_editor && (
+          {art.periodista && (
             <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">
-              Editor: {art.puntuacion_editor}/10
+              Por: {art.periodista}
             </span>
           )}
         </div>
@@ -73,7 +77,7 @@ export default function Articulo({ params }) {
         {art.url_fuente && (
           <div className="mt-6 text-sm text-gray-400">
             Fuente: <a href={art.url_fuente} target="_blank" rel="noopener noreferrer"
-              className="text-blue-500 hover:underline">Ver original →</a>
+              className="text-blue-500 hover:underline">Ver original</a>
           </div>
         )}
         <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-700">
