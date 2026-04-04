@@ -66,7 +66,12 @@ def leer_contexto_periodista(nombre):
         return "\n".join(ruta.read_text(encoding="utf-8").split("\n")[:5])
     return ""
 def periodista(noticia, cfg):
-    titulo = noticia["titulo"].replace('"', "'")
+    titulo = noticia["titulo"]
+    # Traducir si está en inglés
+    if any(w in titulo.lower() for w in ["the", "for", "with", "and", "this", "from"]):
+        trad = ollama(f"Traduce al español este titulo de noticia, responde SOLO con la traduccion: {titulo}")
+        titulo = trad.strip()
+    titulo = titulo.replace('"', "'")
     resumen = noticia["resumen"].replace('"', "'")
     contexto = leer_contexto_periodista(cfg["nombre"])
     prompt = f"""{cfg["estilo"]}

@@ -18,9 +18,8 @@
     "Peru"
   ],
   "feeds_rss": [
-    "https://feeds.bbci.co.uk/mundo/salud/rss.xml",
-    "https://www.paho.org/es/rss.xml",
-    "https://rss.elcomercio.pe/salud/rss.xml"
+    "https://www.who.int/rss-feeds/news-spanish.xml",
+    "https://www.paho.org/es/rss.xml"
   ],
   "puntuacion_minima": 7,
   "max_articulos": 3,

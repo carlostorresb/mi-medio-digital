@@ -17,9 +17,8 @@
     "investigación"
   ],
   "feeds_rss": [
-    "https://feeds.bbci.co.uk/mundo/ciencia_y_tecnologia/rss.xml",
-    "https://www.nationalgeographic.com.es/rss/ciencia",
-    "https://www.nasa.gov/rss/dyn/breaking_news.rss"
+    "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+    "https://www.nationalgeographic.com.es/rss/ciencia"
   ],
   "puntuacion_minima": 7,
   "max_articulos": 3,

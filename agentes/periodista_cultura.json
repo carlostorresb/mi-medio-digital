@@ -18,7 +18,6 @@
   ],
   "feeds_rss": [
     "https://feeds.bbci.co.uk/mundo/cultura_y_entretenimiento/rss.xml",
-    "https://rss.elcomercio.pe/cultura/rss.xml",
     "https://www.france24.com/es/cultura/rss"
   ],
   "puntuacion_minima": 7,
