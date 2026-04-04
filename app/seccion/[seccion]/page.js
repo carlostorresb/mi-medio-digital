@@ -1,0 +1,96 @@
+﻿import fs from "fs";
+import path from "path";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+const SECCIONES = {
+  el_pais:       { label: "El Pais",       color: "bg-red-100 text-red-800" },
+  internacional: { label: "Internacional", color: "bg-blue-100 text-blue-800" },
+  economia:      { label: "Economia",      color: "bg-green-100 text-green-800" },
+  sociedad:      { label: "Sociedad",      color: "bg-orange-100 text-orange-800" },
+  tecnologia:    { label: "Tecnologia",    color: "bg-cyan-100 text-cyan-800" },
+  ciencia:       { label: "Ciencia",       color: "bg-indigo-100 text-indigo-800" },
+  salud:         { label: "Salud",         color: "bg-pink-100 text-pink-800" },
+  cultura:       { label: "Cultura",       color: "bg-purple-100 text-purple-800" },
+  deportes:      { label: "Deportes",      color: "bg-yellow-100 text-yellow-800" },
+  opinion:       { label: "Opinion",       color: "bg-gray-100 text-gray-800" },
+};
+
+function cargarArticulosPorSeccion(seccion) {
+  const carpeta = path.join(process.cwd(), "contenido");
+  if (!fs.existsSync(carpeta)) return [];
+  return fs
+    .readdirSync(carpeta)
+    .filter((f) => f.endsWith(".json"))
+    .map((archivo) => {
+      const data = JSON.parse(fs.readFileSync(path.join(carpeta, archivo), "utf8"));
+      return { ...data, slug: archivo.replace(".json", "") };
+    })
+    .filter((art) => art.seccion === seccion)
+    .sort((a, b) => new Date(b.fecha_generacion) - new Date(a.fecha_generacion));
+}
+
+export async function generateStaticParams() {
+  return Object.keys(SECCIONES).map((seccion) => ({ seccion }));
+}
+
+export async function generateMetadata({ params }) {
+  const sec = SECCIONES[params.seccion];
+  if (!sec) return { title: "Seccion no encontrada" };
+  return { title: `${sec.label} - Mi Medio Digital` };
+}
+
+export default function SeccionPage({ params }) {
+  const sec = SECCIONES[params.seccion];
+  if (!sec) notFound();
+  const articulos = cargarArticulosPorSeccion(params.seccion);
+
+  return (
+    <main className="min-h-screen bg-gray-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div>
+            <Link href="/" className="text-2xl font-bold tracking-tight text-gray-900">Mi Medio Digital</Link>
+            <p className="text-xs text-gray-500">Noticias generadas con IA</p>
+          </div>
+          <nav className="hidden md:flex gap-4 text-sm text-gray-600">
+            {Object.entries(SECCIONES).map(([key, { label }]) => (
+              <Link key={key} href={`/seccion/${key}/`} className="hover:text-blue-700 transition-colors">
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="flex items-center gap-3 mb-8">
+          <span className={`text-sm font-semibold px-3 py-1 rounded-full ${sec.color}`}>
+            {sec.label}
+          </span>
+          <h2 className="text-2xl font-bold text-gray-900">{articulos.length} articulos</h2>
+        </div>
+
+        {articulos.length === 0 ? (
+          <div className="text-center py-24 text-gray-400">
+            <p className="text-xl">Sin noticias en esta seccion.</p>
+            <Link href="/" className="text-blue-500 hover:underline text-sm mt-4 block">Volver al inicio</Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articulos.map((art) => (
+              <Link key={art.slug} href={`/articulo/${art.slug}/`}
+                className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md transition-shadow group block">
+                <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors leading-snug mb-2">
+                  {art.titular || art.titulo}
+                </h3>
+                <p className="text-sm text-gray-500 line-clamp-2">{art.subtitulo}</p>
+                <p className="text-xs text-gray-400 mt-3">{art.fecha_generacion?.slice(0, 10)}</p>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
