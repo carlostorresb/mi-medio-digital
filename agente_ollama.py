@@ -1,4 +1,4 @@
-﻿import feedparser, json, re, base64, os, urllib.request, urllib.parse
+import feedparser, json, re, base64, os, urllib.request, urllib.parse
 from datetime import datetime
 from pathlib import Path
 
@@ -33,10 +33,10 @@ def cargar_periodistas():
     return periodistas
 
 def cargar():
-    return set(json.loads(PROCESADOS.read_text()).get("urls", [])) if PROCESADOS.exists() else set()
+    return set(json.loads(PROCESADOS.read_text(encoding="utf-8")).get("urls", [])) if PROCESADOS.exists() else set()
 
 def guardar(urls):
-    PROCESADOS.write_text(json.dumps({"urls": list(urls)}, indent=2))
+    PROCESADOS.write_text(json.dumps({"urls": list(urls)}, indent=2), encoding="utf-8")
 
 def noticias(feeds, procesados, max_arts=2):
     result = []
@@ -65,6 +65,7 @@ def leer_contexto_periodista(nombre):
     if ruta.exists():
         return "\n".join(ruta.read_text(encoding="utf-8").split("\n")[:5])
     return ""
+
 def periodista(noticia, cfg):
     titulo = noticia["titulo"]
     # Traducir si está en inglés
@@ -105,7 +106,7 @@ def publicar(art):
     slug += "-" + datetime.now().strftime("%Y%m%d%H%M")
     art["slug"] = slug
     Path("contenido").mkdir(exist_ok=True)
-    Path(f"contenido/{slug}.json").write_text(json.dumps(art, ensure_ascii=False, indent=2))
+    Path(f"contenido/{slug}.json").write_text(json.dumps(art, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  Guardado: contenido/{slug}.json")
 
 def main(secciones_filtro=None):
@@ -142,4 +143,3 @@ def main(secciones_filtro=None):
 if __name__ == "__main__":
     import sys
     main(sys.argv[1:] or None)
-
