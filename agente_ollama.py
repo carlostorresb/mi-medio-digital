@@ -58,10 +58,21 @@ def ollama(prompt):
     with urllib.request.urlopen(req, timeout=120) as r:
         return json.loads(r.read())["response"].strip()
 
+
+def leer_contexto_periodista(nombre):
+    """Lee la nota del periodista en Obsidian si existe."""
+    ruta = Path(f"C:/mi-medio-digital/obsidian/01-periodistas/{nombre}.md")
+    if ruta.exists():
+        return ruta.read_text(encoding="utf-8")
+    return ""
 def periodista(noticia, cfg):
     titulo = noticia["titulo"].replace('"', "'")
     resumen = noticia["resumen"].replace('"', "'")
+    contexto = leer_contexto_periodista(cfg["nombre"])
     prompt = f"""{cfg["estilo"]}
+
+CONTEXTO DEL PERIODISTA:
+{contexto}
 
 Noticia: {titulo}
 Resumen: {resumen}
@@ -126,3 +137,4 @@ def main(secciones_filtro=None):
 if __name__ == "__main__":
     import sys
     main(sys.argv[1:] or None)
+

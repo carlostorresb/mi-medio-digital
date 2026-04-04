@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "6f148a62d5950c54",
+    "type": "split",
+    "children": [
+      {
+        "id": "c5b76a0f246c57e1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1180755ce4458578",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01-periodistas/Ana Vega.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ana Vega"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "03bb6bb8356381b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "f3c7131555a6f009",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "26699698b99855d2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "553bae99044c51aa",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6e703a2e2e51a10a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a3215ac169181f99",
+    "type": "split",
+    "children": [
+      {
+        "id": "e993756cf6b81461",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a676b223ca7d1533",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01-periodistas/Ana Vega.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Ana Vega"
+            }
+          },
+          {
+            "id": "82097cf46c592d39",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01-periodistas/Ana Vega.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Ana Vega"
+            }
+          },
+          {
+            "id": "beb24c4a2d646f45",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9d0e7dec2c3e002e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "2a4b12e1e62fcdc3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01-periodistas/Ana Vega.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Ana Vega"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "1180755ce4458578",
+  "lastOpenFiles": [
+    "02-temas/Cuba liberacion presos.md",
+    "02-temas/Conflicto Iran-EEUU.md",
+    "02-temas/Guerra de aranceles Trump.md",
+    "01-periodistas/Isabel Mora.md",
+    "01-periodistas/Diego Vargas.md",
+    "01-periodistas/Rosa Castillo.md",
+    "01-periodistas/Carmen Lopez.md",
+    "01-periodistas/Pedro Sanchez.md",
+    "01-periodistas/Luis Torres.md",
+    "01-periodistas/Maria Flores.md",
+    "01-periodistas/Jorge Mendoza.md"
+  ]
+}
