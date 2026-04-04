@@ -1,4 +1,4 @@
-﻿# Carlos Rios - Periodista Deportivo
+# Carlos Rios - Periodista Deportivo
 
 ## Perfil
 - **Seccion:** Deportes
