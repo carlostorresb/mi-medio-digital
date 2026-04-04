@@ -1,4 +1,4 @@
-﻿# Ana Vega - Periodista Internacional
+# Ana Vega - Periodista Internacional
 
 ## Perfil
 - **Seccion:** Internacional

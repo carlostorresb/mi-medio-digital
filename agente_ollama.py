@@ -63,7 +63,7 @@ def leer_contexto_periodista(nombre):
     """Lee la nota del periodista en Obsidian si existe."""
     ruta = Path(f"C:/mi-medio-digital/obsidian/01-periodistas/{nombre}.md")
     if ruta.exists():
-        return ruta.read_text(encoding="utf-8")
+        return "\n".join(ruta.read_text(encoding="utf-8").split("\n")[:5])
     return ""
 def periodista(noticia, cfg):
     titulo = noticia["titulo"].replace('"', "'")
@@ -77,8 +77,8 @@ CONTEXTO DEL PERIODISTA:
 Noticia: {titulo}
 Resumen: {resumen}
 
-Responde SOLO con este JSON en espanol, sin texto adicional:
-{{"titular":"titular atractivo","subtitulo":"una oracion","cuerpo":"<p>parrafo 1</p><p>parrafo 2</p>","tags":["tag1","tag2"],"resumen_seo":"descripcion breve"}}"""
+Escribe un articulo LARGO y DETALLADO con minimo 5 parrafos extensos. Responde SOLO con este JSON en espanol, sin texto adicional:
+{{"titular":"titular atractivo","subtitulo":"una oracion","cuerpo":"<p>Primer parrafo con contexto e introduccion detallada</p><p>Segundo parrafo con antecedentes y datos relevantes</p><p>Tercer parrafo con desarrollo y analisis profundo</p><p>Cuarto parrafo con impacto y consecuencias</p><p>Quinto parrafo con conclusion y perspectiva</p>","tags":["tag1","tag2"],"resumen_seo":"descripcion breve"}}"""
     try:
         t = ollama(prompt)
         start = t.find("{")

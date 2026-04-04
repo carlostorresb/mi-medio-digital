@@ -11,14 +11,17 @@
             "id": "1180755ce4458578",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "01-periodistas/Ana Vega.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "Ana Vega"
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
             }
           }
         ]
@@ -94,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01-periodistas/Ana Vega.md",
+                "file": "Untitled.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +107,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Ana Vega"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -113,12 +116,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01-periodistas/Ana Vega.md",
+                "file": "Untitled.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Ana Vega"
+              "title": "Outgoing links from Untitled"
             }
           },
           {
@@ -156,13 +159,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01-periodistas/Ana Vega.md",
+                "file": "Untitled.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Ana Vega"
+              "title": "Outline of Untitled"
             }
           }
         ]
@@ -185,6 +188,9 @@
   },
   "active": "1180755ce4458578",
   "lastOpenFiles": [
+    "Migracion Venezuela.md",
+    "Untitled.canvas",
+    "01-periodistas/Ana Vega.md",
     "02-temas/Cuba liberacion presos.md",
     "02-temas/Conflicto Iran-EEUU.md",
     "02-temas/Guerra de aranceles Trump.md",
